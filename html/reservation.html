@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3f4630">
+
+    <title>Réserver une expérience — Jean-Philippe Perrin</title>
+
+    <link rel="stylesheet" href="../css/reservation.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"
+        defer
+    ></script>
+
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+<button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Ouvrir le menu de navigation"
+        aria-controls="siteMenu"
+        aria-expanded="false"
+    >
+        <img src="../assets/menu.png" alt="">
+    </button>
+
+    <nav class="site-menu" id="siteMenu" aria-label="Navigation principale" aria-hidden="true">
+        <a href="index.html">Accueil</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="experience.html">Expérience</a>
+        <a href="competences.html">Compétences</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html">Contact</a>
+        <a href="reservation.html">Réservation</a>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+    <p>Jean-Philippe Perrin</p>
+
+    <nav>
+        <a href="index.html">Retour au portfolio</a>
+    </nav>
+
+</header>
+
+    <main>
+        <section id="reservation">
+
+            <!-- CADRE 1 : INTRODUCTION -->
+            <div class="reservation-intro">
+                <h1>Réserver une expérience</h1>
+
+                <p>
+                    Venez imaginer votre prochaine expérience dans un établissement
+                    pensé autour du service, de l'hospitalité et de l'attention portée
+                    aux détails.
+                </p>
+
+                <p>
+                    Sélectionnez l'expérience qui vous intéresse et indiquez-nous
+                    vos préférences afin que nous puissions préparer votre demande.
+                </p>
+            </div>
+
+            <form
+                id="reservation-form"
+                action="https://formspree.io/f/xljdwwlj"
+                method="post"
+            >
+
+                <!-- CADRE 2 : COORDONNÉES -->
+                <fieldset class="form-section coordinates-section"
+                    aria-labelledby="coordinates-title">
+
+                    <div class="section-heading" id="coordinates-title">
+                        01 — Vos coordonnées
+                    </div>
+
+                    <div class="personal-fields">
+
+                        <div class="form-field">
+                            <label for="first-name">Prénom</label>
+                            <input
+                                type="text"
+                                id="first-name"
+                                name="first-name"
+                                autocomplete="given-name"
+                                placeholder="Votre prénom"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="last-name">Nom</label>
+                            <input
+                                type="text"
+                                id="last-name"
+                                name="last-name"
+                                autocomplete="family-name"
+                                placeholder="Votre nom"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-field form-field-email">
+                            <label for="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                placeholder="votre@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-field phone-field">
+                            <label for="phone-number">Téléphone</label>
+                            <input
+                                type="tel"
+                                id="phone-number"
+                                autocomplete="tel"
+                                placeholder="Votre numéro de téléphone"
+                                required
+                            >
+                            <input type="hidden" id="phone" name="phone">
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <!-- CADRE 3 : RÉSERVATION -->
+                <fieldset class="form-section experience-section"
+                    aria-labelledby="experience-title">
+
+                    <div class="section-heading" id="experience-title">
+                        02 — Votre expérience
+                    </div>
+
+                    <div class="form-field">
+                        <label for="experience">
+                            Que souhaitez-vous réserver ?
+                        </label>
+
+                        <select id="experience" name="experience" required>
+                            <option value="" selected disabled>
+                                Choisissez une expérience
+                            </option>
+                            <option value="hotel">Séjour hôtelier</option>
+                            <option value="restaurant">Expérience gastronomique</option>
+                            <option value="concierge">Service de conciergerie</option>
+                        </select>
+                    </div>
+
+                    <!-- OPTIONS HÔTEL -->
+                    <div id="hotel-options" class="dynamic-options" hidden>
+                        <h2>Choisissez votre chambre</h2>
+
+                        <div class="form-field">
+                            <label for="room">Type de chambre</label>
+                            <select id="room" name="room" disabled>
+                                <option value="classic">Classic Room</option>
+                                <option value="deluxe">Deluxe Room</option>
+                                <option value="suite">Suite</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- OPTIONS RESTAURANT -->
+                    <div id="restaurant-options" class="dynamic-options" hidden>
+                        <h2>Choisissez votre table</h2>
+
+                        <div class="form-field">
+                            <label for="table">Type de table</label>
+                            <select id="table" name="table" disabled>
+                                <option value="standard">Standard Table</option>
+                                <option value="premium">
+                                    Premium Table — Minimum spend : 150 €
+                                </option>
+                                <option value="vip">
+                                    VIP Table — Minimum spend : 200 €
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- OPTIONS CONCIERGERIE -->
+                    <div id="concierge-options" class="dynamic-options" hidden>
+                        <h2>Choisissez votre service de conciergerie</h2>
+
+                        <div class="form-field">
+                            <label for="concierge">Service souhaité</label>
+                            <select id="concierge" name="concierge" disabled>
+                                <option value="yacht">Yacht Charter</option>
+                                <option value="limousine">Luxury Limousine</option>
+                                <option value="chef">Private Chef</option>
+                                <option value="aviation">Private Aviation</option>
+                                <option value="event">VIP Event &amp; Experience</option>
+                                <option value="wellness">Private Wellness &amp; Spa</option>
+                                <option value="car">Luxury Car &amp; Driver</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- DATE ET PERSONNES -->
+                    <div class="booking-fields">
+
+                        <div class="form-field">
+                            <label for="date">Date souhaitée</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="guests">Nombre de personnes</label>
+                            <select id="guests" name="guests">
+                                <option value="1">1 personne</option>
+                                <option value="2">2 personnes</option>
+                                <option value="3">3 personnes</option>
+                                <option value="4">4 personnes</option>
+                                <option value="5">5 personnes</option>
+                                <option value="6">6 personnes</option>
+                                <option value="7">7 personnes</option>
+                                <option value="8">8 personnes</option>
+                                <option value="9">9 personnes</option>
+                                <option value="10">10 personnes</option>
+                                <option value="11">11 personnes</option>
+                                <option value="12">12 personnes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field budget-field">
+                            <label for="budget">Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="50">50 €</option>
+                                <option value="100">100 €</option>
+                                <option value="150">150 €</option>
+                                <option value="200">200 €</option>
+                                <option value="250">250 €</option>
+                                <option value="300">300 €</option>
+                                <option value="350">350 €</option>
+                                <option value="400">400 €</option>
+                                <option value="450">450 €</option>
+                                <option value="500">500 €</option>
+                                <option value="600">600 €</option>
+                                <option value="700">700 €</option>
+                                <option value="800">800 €</option>
+                                <option value="900">900 €</option>
+                                <option value="1000">1 000 €</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- DEMANDES PARTICULIÈRES -->
+                    <div class="form-field">
+                        <label for="message">Demandes particulières</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            placeholder="Indiquez vos préférences ou toute information utile..."
+                        ></textarea>
+                    </div>
+
+                    <!-- BOUTON DANS LE CADRE EXPÉRIENCE -->
+                    <button type="submit">Envoyer la demande</button>
+
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <img
+            src="../assets/triangle-marbre.PNG"
+            alt=""
+            class="footer-triangle"
+        >
+
+        <a
+            href="https://www.linkedin.com/in/jean-philippe-perrin-28353a93/"
+            class="footer-social footer-linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img src="../assets/linkedin.png" alt="">
+            <span>Mon LinkedIn</span>
+        </a>
+
+        <ul class="footer-information">
+            <li>Jean-Philippe Perrin</li>
+            <li>Hôtellerie • Supply Chain •<br>Data • Analyse métier • IA</li>
+            <li>© 2026</li>
+            <li><a href="../index.html">Retour au portfolio</a></li>
+        </ul>
+
+        <a
+            href="https://github.com/jpperrin25"
+            class="footer-social footer-github"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img src="../assets/github.png" alt="">
+            <span>Mon GitHub</span>
+        </a>
+
+    </footer>
+
+</body>
+</html>

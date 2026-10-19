@@ -1,0 +1,602 @@
+
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-color: #f4f0e8;
+    background-image: url("../assets/fond-marbre-contact.PNG");
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: repeat-y;
+    background-attachment: scroll;
+
+    color: #f4f0e8;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    width: 85%;
+    max-width: 1100px;
+    min-height: 115px;
+
+    margin: 30px auto;
+    padding: 24px 40px;
+
+    background-color: #3f4630;
+    background-image: url("../assets/header-marbre.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.site-header p {
+    margin: 0 0 8px;
+    color: #f4f0e8;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.site-header nav a {
+    color: #c8a85a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-header nav a:hover {
+    color: #ffffff;
+}
+/* =========================================================
+   MENU HAMBURGER — REPRISE DU MODÈLE DE L'INDEX
+   ========================================================= */
+
+.menu-toggle {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    z-index: 1001;
+    width: 96px;
+    height: 96px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: transform 0.25s ease;
+}
+
+.menu-toggle:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: transparent;
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid #c8a85a;
+    outline-offset: 4px;
+}
+
+.menu-toggle img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* =========================================================
+   MENU DÉROULANT — REPRISE DU MODÈLE DE L'INDEX
+   ========================================================= */
+
+.site-menu {
+    position: fixed;
+    top: 112px;
+    right: 28px;
+    z-index: 1000;
+    width: min(280px, calc(100vw - 36px));
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid #c8a85a;
+    border-radius: 12px;
+    background: rgba(47, 53, 36, 0.97);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        visibility 0.22s ease;
+}
+
+.site-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.site-menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #f4f0e8;
+    font-weight: 700;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.site-menu a:hover,
+.site-menu a:focus-visible {
+    color: #c8a85a;
+    background-color: rgba(200, 168, 90, 0.12);
+}
+
+/* =========================================================
+   MENU — VERSION MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+    .menu-toggle {
+        top: 12px;
+        right: 12px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .site-menu {
+        top: 82px;
+        right: 12px;
+    }
+}
+/* =========================================================
+   CONTENU CONTACT
+========================================================= */
+
+#contact {
+    width: 85%;
+    max-width: 1100px;
+
+    margin: 30px auto;
+    padding: 45px;
+
+    background-color: rgba(63, 70, 48, 0.96);
+
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   TITRE
+========================================================= */
+
+#contact h1 {
+    margin: 0 0 30px;
+    color: #f4f0e8;
+
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   COORDONNÉES
+========================================================= */
+
+.contact-information {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 24px;
+
+    background-color: rgba(244, 240, 232, 0.08);
+
+    border: 1px solid rgba(200, 168, 90, 0.55);
+    border-radius: 12px;
+}
+
+.contact-information p {
+    margin: 10px 0;
+    color: #f4f0e8;
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+}
+
+.contact-information .contact-name {
+    margin-top: 0;
+    color: #c8a85a;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.contact-information a {
+    color: #f0cf78;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease;
+}
+
+.contact-information a:hover {
+    color: #ffffff;
+}
+
+/* =========================================================
+   RÉSEAUX SOCIAUX
+========================================================= */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 60px;
+
+    margin-top: 35px;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 160px;
+    padding: 10px;
+
+    color: #c8a85a;
+    text-decoration: none;
+    font-weight: 700;
+
+    transition: color 0.3s ease;
+}
+
+.social-link img {
+    display: block;
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.social-link span {
+    display: block;
+    color: #f0cf78;
+    font-size: 1.05rem;
+}
+
+.social-link:hover {
+    color: #ffffff;
+}
+
+.social-link:hover img {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 7px 8px rgba(0, 0, 0, 0.25));
+}
+
+.social-link:focus-visible,
+.site-header a:focus-visible,
+.site-footer a:focus-visible {
+    outline: 2px solid #f0cf78;
+    outline-offset: 5px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    width: 85%;
+    max-width: 1100px;
+    height: 270px;
+
+    margin: 30px auto;
+    padding: 0;
+
+    background-color: #3f4630;
+    background-image: url("../assets/footer-olive.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 1;
+}
+
+/* =========================================================
+   TRIANGLE DU FOOTER
+========================================================= */
+
+.footer-triangle {
+    position: absolute;
+    width: 370px;
+    height: auto;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* =========================================================
+   TEXTE CENTRAL DU FOOTER
+========================================================= */
+
+.footer-information {
+    position: absolute;
+    width: 220px;
+
+    left: 50%;
+    top: 38px;
+    transform: translateX(-50%);
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 2;
+}
+
+.footer-information li {
+    list-style: none;
+    margin: 4px 0;
+    padding: 0;
+
+    color: #3f4630;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+
+    text-shadow:
+        0 1px 2px rgba(255, 255, 255, 0.55),
+        0 1px 3px rgba(0, 0, 0, 0.20);
+}
+
+.footer-information a {
+    color: #9b762b;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.footer-information a:hover {
+    color: #3f4630;
+}
+
+/* =========================================================
+   RÉSEAUX SOCIAUX DU FOOTER
+========================================================= */
+
+.footer-social {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    color: #f0cf78;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    z-index: 3;
+}
+
+.footer-linkedin {
+    left: 15%;
+}
+
+.footer-github {
+    right: 15%;
+}
+
+.footer-social img {
+    display: block;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.footer-social:hover {
+    color: #ffffff;
+}
+
+.footer-social:hover img {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 7px 6px rgba(0, 0, 0, 0.25));
+}
+
+/* =========================================================
+   RESPONSIVE : TABLETTES ET MOBILES
+========================================================= */
+
+@media (max-width: 768px) {
+    body {
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: repeat-y;
+    }
+
+    .site-header,
+    #contact,
+    .site-footer {
+        width: 90%;
+    }
+
+    .site-header {
+        min-height: 100px;
+        margin: 20px auto 25px;
+        padding: 20px 15px;
+    }
+
+    .site-header p {
+        font-size: 1.2rem;
+    }
+
+    #contact {
+        margin: 25px auto;
+        padding: 30px 20px;
+    }
+
+    #contact h1 {
+        font-size: 1.7rem;
+    }
+
+    .contact-information {
+        padding: 18px 12px;
+    }
+
+    .contact-information p {
+        font-size: 0.95rem;
+    }
+
+    .contact-information .contact-name {
+        font-size: 1.15rem;
+    }
+
+    .social-links {
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .social-link {
+        min-width: 110px;
+    }
+
+    .social-link img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .social-link span {
+        font-size: 0.95rem;
+    }
+
+    .site-footer {
+        height: 250px;
+        margin: 25px auto 20px;
+    }
+
+    .footer-triangle {
+        width: 290px;
+    }
+
+    .footer-information {
+        width: 185px;
+        top: 35px;
+    }
+
+    .footer-information li {
+        font-size: 0.68rem;
+        line-height: 1.2;
+        margin: 3px 0;
+    }
+
+    .footer-social {
+        width: 65px;
+        font-size: 0.55rem;
+    }
+
+    .footer-social img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .footer-linkedin {
+        left: 7%;
+    }
+
+    .footer-github {
+        right: 7%;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE : TRÈS PETITS ÉCRANS
+========================================================= */
+
+@media (max-width: 380px) {
+    #contact {
+        padding: 25px 14px;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-link {
+        min-width: 100px;
+    }
+
+    .social-link img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .footer-linkedin {
+        left: 3%;
+    }
+
+    .footer-github {
+        right: 3%;
+    }
+}

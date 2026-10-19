@@ -1,0 +1,721 @@
+
+/* ========================================
+   BASE
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-color: #f4f0e8;
+    background-image: url("../assets/fond-competences.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: #2f2a24;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.site-header {
+    width: 85%;
+    max-width: 1100px;
+    min-height: 110px;
+    margin: 30px auto;
+    padding: 25px 40px;
+
+    background-color: #3f4630;
+    background-image: url("../assets/header-marbre.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.site-header p {
+    margin: 0 0 10px;
+    color: #f4f0e8;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.site-header a {
+    color: #c8a85a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-header a:hover {
+    color: #f4f0e8;
+}
+/* =========================================================
+   MENU HAMBURGER — REPRISE DU MODÈLE DE L'INDEX
+   ========================================================= */
+
+.menu-toggle {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    z-index: 1001;
+    width: 96px;
+    height: 96px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: transform 0.25s ease;
+}
+
+.menu-toggle:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: transparent;
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid #c8a85a;
+    outline-offset: 4px;
+}
+
+.menu-toggle img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* =========================================================
+   MENU DÉROULANT — REPRISE DU MODÈLE DE L'INDEX
+   ========================================================= */
+
+.site-menu {
+    position: fixed;
+    top: 112px;
+    right: 28px;
+    z-index: 1000;
+    width: min(280px, calc(100vw - 36px));
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid #c8a85a;
+    border-radius: 12px;
+    background: rgba(47, 53, 36, 0.97);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        visibility 0.22s ease;
+}
+
+.site-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.site-menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #f4f0e8;
+    font-weight: 700;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.site-menu a:hover,
+.site-menu a:focus-visible {
+    color: #c8a85a;
+    background-color: rgba(200, 168, 90, 0.12);
+}
+
+/* =========================================================
+   MENU — VERSION MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+    .menu-toggle {
+        top: 12px;
+        right: 12px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .site-menu {
+        top: 82px;
+        right: 12px;
+    }
+}
+
+/* ========================================
+   TITRE DE PAGE
+======================================== */
+
+#skills {
+    width: 85%;
+    max-width: 1100px;
+    margin: 35px auto 45px;
+}
+
+.skills-heading {
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.skills-heading h1 {
+    margin: 0;
+    color: #3f4630;
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+}
+
+.skills-heading p {
+    max-width: 760px;
+    margin: 8px auto 0;
+    color: #665b43;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+
+/* ========================================
+   GRILLE DES CARTES
+======================================== */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+
+/* ========================================
+   CARTES OLIVE
+======================================== */
+
+.skill-card {
+    min-width: 0;
+    padding: 28px 30px;
+
+    background-color: rgba(63, 70, 48, 0.97);
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 20px rgba(38, 32, 22, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    color: #f4f0e8;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 26px rgba(38, 32, 22, 0.23),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+
+/* ========================================
+   TITRES DES CARTES
+======================================== */
+
+.skill-card h2 {
+    margin: 0 0 16px;
+    color: #c8a85a;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+
+/* ========================================
+   SOUS-TITRES DES CARTES
+======================================== */
+
+.skill-card h3 {
+    margin: 22px 0 10px;
+    padding-bottom: 6px;
+
+    color: #c8a85a;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+
+    border-bottom: 1px solid rgba(200, 168, 90, 0.4);
+}
+
+.skill-card h2 + h3 {
+    margin-top: 0;
+}
+
+
+/* ========================================
+   LISTES DE COMPÉTENCES
+======================================== */
+
+.skill-card ul {
+    margin: 0;
+    padding-left: 22px;
+    color: #f4f0e8;
+}
+
+.skill-card li {
+    margin: 7px 0;
+    color: #f4f0e8;
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
+.skill-card li::marker {
+    color: #c8a85a;
+}
+
+
+/* ========================================
+   PARAGRAPHES
+======================================== */
+
+.skill-card p {
+    margin: 0 0 16px;
+    color: #f4f0e8;
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+
+/* ========================================
+   COMPÉTENCES TRANSVERSALES
+   TITRE À GAUCHE
+   LISTE À GAUCHE ET CENTRÉE VERTICALEMENT
+======================================== */
+
+.skills-grid > .skill-card:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-grid > .skill-card:nth-child(4) h2 {
+    text-align: left;
+}
+
+.skills-grid > .skill-card:nth-child(4) ul {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    margin: 0;
+    padding-left: 22px;
+
+    text-align: left;
+}
+
+.skills-grid > .skill-card:nth-child(4) li {
+    text-align: left;
+    align-self: stretch;
+}
+
+
+/* ========================================
+   CARTE IA — PLEINE LARGEUR
+======================================== */
+
+.skill-card-featured {
+    grid-column: 1 / -1;
+    background-color: rgba(63, 70, 48, 0.98);
+}
+
+.skill-card-featured > p:first-of-type {
+    max-width: 900px;
+}
+
+.skill-card-featured ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 35px;
+    row-gap: 2px;
+}
+
+.skill-card-featured .skill-card-note {
+    margin: 22px 0 0;
+    padding: 15px 18px;
+
+    background-color: rgba(200, 168, 90, 0.10);
+    border-left: 3px solid #c8a85a;
+    border-radius: 0 8px 8px 0;
+
+    font-style: italic;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.site-footer {
+    width: 85%;
+    max-width: 1100px;
+    height: 270px;
+
+    margin: 30px auto;
+    padding: 0;
+
+    background-color: #3f4630;
+    background-image: url("../assets/footer-olive.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 1;
+}
+
+
+/* ========================================
+   TRIANGLE MARBRE
+======================================== */
+
+.footer-triangle {
+    position: absolute;
+    width: 370px;
+    max-width: none;
+    height: auto;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* ========================================
+   TEXTE CENTRAL DU FOOTER
+======================================== */
+
+.footer-information {
+    position: absolute;
+    width: 220px;
+    left: 50%;
+    top: 38px;
+    transform: translateX(-50%);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    z-index: 2;
+}
+
+.footer-information li {
+    list-style: none;
+    margin: 4px 0;
+    padding: 0;
+
+    color: #3f4630;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+
+    text-shadow:
+        0 1px 2px rgba(255, 255, 255, 0.75),
+        0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.footer-information .footer-name {
+    font-size: 0.9rem;
+}
+
+.footer-information a {
+    color: #c8a85a;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.footer-information a:hover {
+    color: #f4f0e8;
+}
+
+
+/* ========================================
+   LIENS LINKEDIN ET GITHUB
+======================================== */
+
+.footer-social {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    color: #c8a85a;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    z-index: 3;
+}
+
+.footer-linkedin {
+    left: 15%;
+}
+
+.footer-github {
+    right: 15%;
+}
+
+.footer-social img {
+    display: block;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.footer-social:hover {
+    color: #f4f0e8;
+}
+
+.footer-social:hover img {
+    transform: translateY(-8px);
+    filter: drop-shadow(0 7px 6px rgba(0, 0, 0, 0.25));
+}
+
+
+/* ========================================
+   ACCESSIBILITÉ
+======================================== */
+
+.site-header a:focus-visible,
+.site-footer a:focus-visible {
+    outline: 2px solid #c8a85a;
+    outline-offset: 4px;
+}
+
+
+/* ========================================
+   RESPONSIVE — TABLETTES
+======================================== */
+
+@media (max-width: 900px) {
+
+    .skills-grid {
+        gap: 16px;
+    }
+
+    .skill-card {
+        padding: 24px;
+    }
+
+    .skill-card h2 {
+        font-size: 1.15rem;
+    }
+
+    .skill-card h3 {
+        font-size: 0.95rem;
+    }
+
+    .skill-card li,
+    .skill-card p {
+        font-size: 0.95rem;
+    }
+
+    .skill-card-featured ul {
+        column-gap: 22px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE — MOBILES
+======================================== */
+
+@media (max-width: 768px) {
+
+    .site-header,
+    #skills,
+    .site-footer {
+        width: 90%;
+    }
+
+    .site-header {
+        margin: 20px auto 25px;
+        padding: 20px;
+    }
+
+    #skills {
+        margin: 25px auto 35px;
+    }
+
+    .skills-heading {
+        margin-bottom: 22px;
+    }
+
+    .skills-heading h1 {
+        font-size: 1.7rem;
+    }
+
+    .skills-heading p {
+        font-size: 0.95rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skill-card {
+        padding: 24px 22px;
+    }
+
+    .skill-card h2 {
+        font-size: 1.15rem;
+    }
+
+    .skill-card h3 {
+        margin-top: 20px;
+    }
+
+    .skill-card-featured {
+        grid-column: auto;
+    }
+
+    .skill-card-featured ul {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .skills-grid > .skill-card:nth-child(4) ul {
+        justify-content: flex-start;
+    }
+
+    .site-footer {
+        height: 250px;
+        margin: 25px auto 20px;
+    }
+
+    .footer-triangle {
+        width: 290px;
+        top: 50%;
+    }
+
+    .footer-information {
+        width: 185px;
+        top: 35px;
+    }
+
+    .footer-information li {
+        font-size: 0.68rem;
+        line-height: 1.2;
+        margin: 3px 0;
+    }
+
+    .footer-information .footer-name {
+        font-size: 0.76rem;
+    }
+
+    .footer-social {
+        width: 65px;
+        font-size: 0.55rem;
+    }
+
+    .footer-social img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .footer-linkedin {
+        left: 7%;
+    }
+
+    .footer-github {
+        right: 7%;
+    }
+}
+
+
+/* ========================================
+   MOUVEMENTS RÉDUITS
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .skill-card,
+    .footer-social img {
+        transition: none;
+    }
+
+    .skill-card:hover {
+        transform: none;
+    }
+}
