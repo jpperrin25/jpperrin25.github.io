@@ -74,6 +74,85 @@ body {
 .site-header a:hover {
     color: #f4f0e8;
 }
+/* ========================================
+   CADRE OLIVE — TITRE ET SOUS-TITRE
+======================================== */
+
+.experience-intro {
+    margin: 0 0 35px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.experience-intro-card {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 18px 30px;
+
+    background-color: rgba(63, 70, 48, 0.96);
+
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+
+    font-family: Georgia, "Times New Roman", serif;
+    opacity: 1;
+}
+
+/* TITRE PRINCIPAL — DORÉ */
+
+.experience-intro-card h1 {
+    margin: 0 0 8px;
+
+    color: #c8a85a !important;
+    -webkit-text-fill-color: #c8a85a;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+
+    opacity: 1;
+    text-shadow: none;
+}
+
+/* SOUS-TITRE — BLANC CASSÉ */
+
+.experience-intro-card p {
+    max-width: 850px;
+    margin: 0 auto;
+
+    color: #f4f0e8 !important;
+    -webkit-text-fill-color: #f4f0e8;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.7;
+
+    opacity: 1;
+    text-shadow: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .experience-intro-card {
+        padding: 16px 20px;
+    }
+
+    .experience-intro-card h1 {
+        font-size: 1.6rem;
+    }
+
+    .experience-intro-card p {
+        font-size: 0.92rem;
+    }
+}
 /* =========================================================
    MENU HAMBURGER — REPRISE DU MODÈLE DE L'INDEX
    ========================================================= */
@@ -718,4 +797,13 @@ body {
     .skill-card:hover {
         transform: none;
     }
+}
+
+/* Supprimer le soulignement des liens du menu hamburger */
+.site-menu a,
+.site-menu a:hover,
+.site-menu a:focus,
+.site-menu a:focus-visible,
+.site-menu a:active {
+    text-decoration: none !important;
 }

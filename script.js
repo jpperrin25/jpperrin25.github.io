@@ -194,3 +194,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+
+    /* =====================================================
+       MODALE DU CV
+       ===================================================== */
+
+    const openCvButton = document.getElementById("openCvModal");
+    const cvModal = document.getElementById("cvModal");
+    const closeCvButton = document.getElementById("closeCvModal");
+
+    if (openCvButton && cvModal && closeCvButton) {
+        let previousFocus = null;
+
+        function openCvModal() {
+            previousFocus = document.activeElement;
+
+            cvModal.classList.add("is-open");
+            cvModal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("cv-modal-open");
+
+            closeCvButton.focus();
+        }
+
+        function closeCvModal() {
+            cvModal.classList.remove("is-open");
+            cvModal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("cv-modal-open");
+
+            if (previousFocus) {
+                previousFocus.focus();
+            }
+        }
+
+        openCvButton.addEventListener("click", openCvModal);
+        closeCvButton.addEventListener("click", closeCvModal);
+
+        cvModal.addEventListener("click", (event) => {
+            if (event.target === cvModal) {
+                closeCvModal();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (
+                event.key === "Escape" &&
+                cvModal.classList.contains("is-open")
+            ) {
+                closeCvModal();
+            }
+        });
+    }

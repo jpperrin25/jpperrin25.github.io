@@ -733,3 +733,12 @@ body {
         right: 3%;
     }
 }
+
+/* Supprimer le soulignement des liens du menu hamburger */
+.site-menu a,
+.site-menu a:hover,
+.site-menu a:focus,
+.site-menu a:focus-visible,
+.site-menu a:active {
+    text-decoration: none !important;
+}

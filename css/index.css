@@ -242,6 +242,269 @@ a {
     transform: translateY(-2px);
 }
 
+
+/* =========================================================
+   BOUTON CV — ALIGNEMENT AVEC LE BOUTON EXISTANT
+   ========================================================= */
+
+.cv-open-button {
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+    cursor: pointer;
+}
+
+.cv-open-button:hover {
+    background-color: #c8a85a;
+    color: #2f2a24;
+}
+
+/* =========================================================
+   MODALE CV — IDENTITÉ VISUELLE DU PORTFOLIO
+   ========================================================= */
+
+.cv-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(18, 20, 14, 0.82);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.cv-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.cv-modal-panel {
+    display: flex;
+    flex-direction: column;
+
+    width: min(1050px, 100%);
+    max-height: 92vh;
+    overflow: hidden;
+
+    background: #3f4630;
+    border: 1px solid #c8a85a;
+    border-radius: 14px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+    transform: translateY(12px) scale(0.99);
+    transition: transform 0.25s ease;
+}
+
+.cv-modal.is-open .cv-modal-panel {
+    transform: translateY(0) scale(1);
+}
+
+/* En-tête de la fenêtre */
+
+.cv-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 18px 24px;
+
+    border-bottom: 1px solid rgba(200, 168, 90, 0.55);
+    background: rgba(47, 42, 36, 0.35);
+}
+
+.cv-modal-eyebrow {
+    margin: 0 0 4px;
+
+    color: #c8a85a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.cv-modal-header h2 {
+    margin: 0;
+
+    color: #f4f0e8;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+}
+
+/* Bouton de fermeture */
+
+.cv-modal-close {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    border: 1px solid #c8a85a;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #c8a85a;
+
+    font-family: Arial, sans-serif;
+    font-size: 1.8rem;
+    line-height: 1;
+
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cv-modal-close:hover {
+    background: #c8a85a;
+    color: #2f2a24;
+    transform: rotate(90deg);
+}
+
+.cv-modal-close:focus-visible,
+.cv-modal-actions a:focus-visible {
+    outline: 2px solid #f4f0e8;
+    outline-offset: 4px;
+}
+
+/* Action secondaire */
+
+.cv-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 12px 20px;
+
+    border-bottom: 1px solid rgba(200, 168, 90, 0.3);
+}
+
+.cv-modal-actions .card-button {
+    margin-top: 0;
+}
+
+/* Visualisation du CV */
+
+.cv-modal-viewer {
+    min-height: 0;
+    overflow: auto;
+    padding: 18px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(200, 168, 90, 0.08),
+            transparent 60%
+        ),
+        #292d21;
+
+    text-align: center;
+}
+
+.cv-modal-viewer img {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 65vh;
+
+    margin: 0 auto;
+
+    border: 1px solid rgba(200, 168, 90, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Empêcher le défilement de la page derrière la modale */
+
+body.cv-modal-open {
+    overflow: hidden;
+}
+
+/* =========================================================
+   MODALE CV — RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 650px) {
+    .cv-modal {
+        padding: 10px;
+    }
+
+    .cv-modal-panel {
+        max-height: 94vh;
+        border-radius: 10px;
+    }
+
+    .cv-modal-header {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .cv-modal-header h2 {
+        font-size: 1.15rem;
+    }
+
+    .cv-modal-eyebrow {
+        font-size: 0.6rem;
+    }
+
+    .cv-modal-close {
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
+    }
+
+    .cv-modal-actions {
+        padding: 10px;
+    }
+
+    .cv-modal-actions .card-button {
+        padding: 7px 10px;
+        font-size: 0.78rem;
+    }
+
+    .cv-modal-viewer {
+        padding: 10px;
+    }
+
+    .cv-modal-viewer img {
+        max-height: 68vh;
+    }
+}
+
+/* Respecter les préférences d'accessibilité */
+
+@media (prefers-reduced-motion: reduce) {
+    .cv-modal,
+    .cv-modal-panel,
+    .cv-modal-close {
+        transition: none;
+    }
+}
+
+
 /* =========================================================
    CONTACT
    ========================================================= */

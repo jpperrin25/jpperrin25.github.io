@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Jean-Philippe Perrin — Hôtellerie, Supply Chain, Data et IA.">
     <title>Jean-Philippe Perrin — Portfolio</title>
     <link rel="stylesheet" href="../css/index.css">
 </head>
@@ -91,7 +92,20 @@
                         <li>Reconversion construite par la recherche et l'apprentissage</li>
                         <li>Formation informatique chez Epitech</li>
                     </ul>
-                    <a href="a-propos.html" class="card-button">Découvrir mon parcours</a>
+
+                    <a href="a-propos.html" class="card-button">
+                        Découvrir mon parcours
+                    </a>
+
+                    <button
+                        type="button"
+                        class="card-button cv-open-button"
+                        id="openCvModal"
+                        aria-haspopup="dialog"
+                        aria-controls="cvModal"
+                    >
+                        Découvrir mon CV
+                    </button>
                 </div>
             </article>
 
@@ -186,6 +200,52 @@
         </section>
     </main>
 
+    <!-- MODALE DU CV -->
+    <div
+        class="cv-modal"
+        id="cvModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cvModalTitle"
+        aria-hidden="true"
+    >
+        <div class="cv-modal-panel">
+            <div class="cv-modal-header">
+                <div>
+                    <p class="cv-modal-eyebrow">PORTFOLIO • DOCUMENT PROFESSIONNEL</p>
+                    <h2 id="cvModalTitle">Mon curriculum vitæ</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="cv-modal-close"
+                    id="closeCvModal"
+                    aria-label="Fermer la fenêtre du CV"
+                >
+                    ×
+                </button>
+            </div>
+
+            <div class="cv-modal-actions">
+                <a
+                    class="card-button"
+                    href="../assets/CV_Jean_Philippe_Perrin_Canva.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Ouvrir dans un nouvel onglet
+                </a>
+            </div>
+
+            <div class="cv-modal-viewer">
+                <img
+                    src="../assets/CV_Jean_Philippe_Perrin_Canva.png"
+                    alt="Curriculum vitæ de Jean-Philippe Perrin"
+                >
+            </div>
+        </div>
+    </div>
+
     <footer>
         <img src="../assets/triangle-marbre.PNG" alt="" class="footer-triangle">
 
@@ -217,7 +277,6 @@
         </a>
     </footer>
 
-    
     <script src="../script.js" defer></script>
 </body>
 </html>
